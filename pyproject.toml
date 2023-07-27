@@ -9,7 +9,7 @@ repository = "https://github.com/ahalimkara/openfaceid"
 packages = [{ include = "openfaceid" }]
 
 [tool.poetry.dependencies]
-python = ">=3.8.1,<4.0"
+python = ">=3.9,<4.0"
 numpy = "^1.25.1"
 pillow = "^10.0.0"
 dlib = "^19.24.2"
@@ -19,6 +19,7 @@ faiss-cpu = { version = "^1", optional = true }
 [tool.poetry.group.lint.dependencies]
 black = "^23.7.0"
 ruff = "^0.0.278"
+types-pillow = "^10.0.0.2"
 
 
 [tool.poetry.group.typing.dependencies]
@@ -50,4 +51,8 @@ profile = "black"
 combine_as_imports = true
 
 [tool.mypy]
-disallow_untyped_defs = "True"
+disallow_untyped_defs = true
+
+[[tool.mypy.overrides]]
+module = ["dlib.*", "_dlib_pybind11.*", "faiss.*"]
+ignore_missing_imports = true

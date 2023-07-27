@@ -17,7 +17,7 @@ class FAISS(vector_store.VectorStore):
         Initialize the FAISS Vector Store.
 
         Args:
-            index (IndexFlatL2): The FAISS index to store embeddings.
+            index: The FAISS index to store embeddings.
         """
 
         self.index = index
@@ -25,14 +25,14 @@ class FAISS(vector_store.VectorStore):
 
     def add_embeddings(
         self,
-        embeddings: List[(str, List[float])],
-    ):
+        embeddings: List[Tuple[str, np.ndarray]],
+    ) -> None:
         """
         Add embeddings to the FAISS index.
 
         Args:
-            embeddings (List[(str, List[float])]): A list of tuples containing image IDs
-                and corresponding face embeddings to add.
+            embeddings: A list of tuples containing image IDs and
+                corresponding face embeddings to add.
         """
 
         image_ids, image_embeddings = zip(*embeddings)
@@ -46,15 +46,15 @@ class FAISS(vector_store.VectorStore):
 
     def search_with_score(
         self,
-        embedding: List[float],
+        embedding: np.ndarray,
         k: int = 1,
-    ) -> Tuple[np.ndarray[float], List[str]]:
+    ) -> Tuple[np.ndarray, List[str]]:
         """
         Search for the nearest embeddings to the face embedding.
 
         Args:
-            embedding (List[float]): The face embedding to search for.
-            k (int): The number of nearest embeddings to retrieve (default: 1).
+            embedding: The face embedding to search for.
+            k: The number of nearest embeddings to retrieve (default: 1).
 
         Returns:
             A tuple containing the scores and image IDs of the nearest embeddings.

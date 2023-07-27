@@ -6,26 +6,26 @@ import numpy as np
 
 class VectorStore(ABC):
     @abstractmethod
-    def add_embeddings(self, embeddings: List[List[float]]):
+    def add_embeddings(self, embeddings: List[Tuple[str, np.ndarray]]) -> None:
         """
         Add face embeddings.
 
         Args:
-            embeddings (List[List[float]]): A list of face embeddings to add.
+            embeddings: A list of face embeddings to add.
         """
 
     @abstractmethod
     def search_with_score(
         self,
-        embedding: List[float],
+        embedding: np.ndarray,
         k: int = 1,
-    ) -> Tuple[np.ndarray[float], np.ndarray[int]]:
+    ) -> Tuple[np.ndarray, List[str]]:
         """
         Search for the nearest embeddings to the face embedding.
 
         Args:
-            embedding (List[float]): The input embedding to search for.
-            k (int): The number of nearest embeddings to retrieve (default: 1).
+            embedding: The input embedding to search for.
+            k: The number of nearest embeddings to retrieve (default: 1).
 
         Returns:
             A tuple containing the scores and indices of the nearest embeddings.
