@@ -5,6 +5,7 @@ description = "Identity Verification with Facial Recognition"
 authors = ["Abdulhalim Kara <ahalimkara@gmail.com>"]
 license = "Apache License 2.0"
 readme = "README.md"
+repository = "https://github.com/ahalimkara/openfaceid"
 packages = [{ include = "openfaceid" }]
 
 [tool.poetry.dependencies]
