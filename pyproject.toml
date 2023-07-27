@@ -9,7 +9,7 @@ repository = "https://github.com/ahalimkara/openfaceid"
 packages = [{ include = "openfaceid" }]
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = ">=3.8.1,<4.0"
 numpy = "^1.25.1"
 pillow = "^10.0.0"
 dlib = "^19.24.2"

@@ -50,7 +50,7 @@ def test_faiss_search_with_score(faiss_index):
 
 
 def test_faiss_add_embeddings_in_steps(faiss_index):
-    """Test adding embeddings in multiple steps to ensure we return the correct image id."""
+    """Test adding embeddings in multiple steps to check returning correct image id."""
     faiss_store = FAISS(faiss_index)
 
     embeddings = [
