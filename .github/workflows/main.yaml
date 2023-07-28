@@ -22,19 +22,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Install poetry
-        run: |
-          pipx install poetry
-
       - name: Set up python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
           cache: poetry
 
-      - name: Install dependencies
+      - name: Install poetry
         run: |
-          poetry install
+          pipx install poetry
+
+      - name: Install dependencies (with all extras for tests)
+        run: |
+          poetry install -E all
 
       - name: Static typing, linter, formatter
         run: |
