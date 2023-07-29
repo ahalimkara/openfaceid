@@ -1,0 +1,101 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.31.0
+      api-key:
+      - d569c718-dae9-4a7b-b16c-b704e9dcd9fc
+    method: GET
+    uri: https://controller.us-west4-gcp-free.pinecone.io/actions/whoami
+  response:
+    body:
+      string: '{"project_name":"719bcb5","user_label":"default","user_name":"c11b0d2"}
+
+        '
+    headers:
+      content-length:
+      - '72'
+      content-type:
+      - application/json; charset=UTF-8
+      date:
+      - Sat, 29 Jul 2023 19:22:22 GMT
+      server:
+      - envoy
+      x-envoy-upstream-service-time:
+      - '0'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"vectors": [{"id": "image1", "values": [0.1, 0.2, 0.3], "metadata": {}},
+      {"id": "image2", "values": [0.4, 0.5, 0.6], "metadata": {}}]}'
+    headers:
+      Accept:
+      - application/json
+      Api-Key:
+      - d569c718-dae9-4a7b-b16c-b704e9dcd9fc
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-client-2.2.2 (requests:2.31.0, urllib3:1.26.15)
+    method: POST
+    uri: https://open-face-id-tests-719bcb5.svc.us-west4-gcp-free.pinecone.io/vectors/upsert
+  response:
+    body:
+      string: '{"upsertedCount":2}'
+    headers:
+      content-length:
+      - '19'
+      content-type:
+      - application/json
+      date:
+      - Sat, 29 Jul 2023 19:22:23 GMT
+      grpc-status:
+      - '0'
+      server:
+      - envoy
+      x-envoy-upstream-service-time:
+      - '55'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"topK": 1, "vector": [0.2, 0.3, 0.4]}'
+    headers:
+      Accept:
+      - application/json
+      Api-Key:
+      - d569c718-dae9-4a7b-b16c-b704e9dcd9fc
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-client-2.2.2 (requests:2.31.0, urllib3:1.26.15)
+    method: POST
+    uri: https://open-face-id-tests-719bcb5.svc.us-west4-gcp-free.pinecone.io/query
+  response:
+    body:
+      string: '{"results":[],"matches":[{"id":"image1","score":0.030000031,"values":[]}],"namespace":""}'
+    headers:
+      content-length:
+      - '89'
+      content-type:
+      - application/json
+      date:
+      - Sat, 29 Jul 2023 19:22:23 GMT
+      grpc-status:
+      - '0'
+      server:
+      - envoy
+      x-envoy-upstream-service-time:
+      - '4'
+    status:
+      code: 200
+      message: OK
+version: 1

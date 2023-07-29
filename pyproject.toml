@@ -6,7 +6,6 @@ authors = ["Abdulhalim Kara <ahalimkara@gmail.com>"]
 license = "Apache License 2.0"
 readme = "README.md"
 repository = "https://github.com/ahalimkara/openfaceid"
-packages = [{ include = "openfaceid" }]
 
 [tool.poetry.dependencies]
 python = ">=3.9,<4.0"
@@ -14,6 +13,8 @@ numpy = "^1.25.1"
 pillow = "^10.0.0"
 dlib = "^19.24.2"
 faiss-cpu = { version = "^1", optional = true }
+pinecone-client = { version = "^2.2.2", optional = true }
+pytest-vcr = { version = "^1.0.2", optional = true }
 
 
 [tool.poetry.group.lint.dependencies]
@@ -32,7 +33,9 @@ pytest = "^7.4.0"
 
 [tool.poetry.extras]
 all = [
-    "faiss-cpu"
+    "faiss-cpu",
+    "pinecone-client",
+    "pytest-vcr",
 ]
 
 [build-system]
@@ -54,5 +57,5 @@ combine_as_imports = true
 disallow_untyped_defs = true
 
 [[tool.mypy.overrides]]
-module = ["dlib.*", "_dlib_pybind11.*", "faiss.*"]
+module = ["dlib.*", "_dlib_pybind11.*", "faiss.*", "pinecone.*"]
 ignore_missing_imports = true

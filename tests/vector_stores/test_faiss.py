@@ -5,6 +5,7 @@ import pytest
 from faiss import IndexFlatL2
 
 from openfaceid.vector_stores.faiss import FAISS
+from tests import helpers
 
 pytestmark = pytest.mark.filterwarnings(
     "ignore:distutils Version classes are deprecated."
@@ -47,8 +48,8 @@ def test_faiss_search_with_score(faiss_index: IndexFlatL2) -> None:
 
     assert len(scores) == 1
     assert len(image_ids) == 1
-    assert isinstance(image_ids[0], str)
-    assert isinstance(scores[0], np.float32)
+    assert helpers.is_float_list(scores)
+    assert helpers.is_str_list(image_ids)
 
 
 def test_faiss_add_embeddings_in_steps(faiss_index: IndexFlatL2) -> None:
