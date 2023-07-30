@@ -1,8 +1,8 @@
 import numpy as np
 import pinecone
 import pytest
-
 from openfaceid.vector_stores.pinecone import Pinecone
+
 from tests import helpers
 
 

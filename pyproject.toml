@@ -6,6 +6,19 @@ authors = ["Abdulhalim Kara <ahalimkara@gmail.com>"]
 license = "Apache License 2.0"
 readme = "README.md"
 repository = "https://github.com/ahalimkara/openfaceid"
+packages = [
+    { include = "openfaceid", from = "src" },
+]
+classifiers = [
+    "Development Status :: 1 - Planning",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
 
 [tool.poetry.dependencies]
 python = ">=3.9,<4.0"
@@ -54,6 +67,7 @@ profile = "black"
 combine_as_imports = true
 
 [tool.mypy]
+mypy_path = "src"
 disallow_untyped_defs = true
 
 [[tool.mypy.overrides]]

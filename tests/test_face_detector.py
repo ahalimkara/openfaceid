@@ -1,7 +1,6 @@
 import os
 
 import pytest
-
 from openfaceid.face_detector import FaceDetector
 
 _TEST_DATA_DIR = os.path.join(os.path.dirname(__file__), "test_data")

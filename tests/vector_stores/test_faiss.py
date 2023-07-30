@@ -3,8 +3,8 @@ from typing import List, Tuple
 import numpy as np
 import pytest
 from faiss import IndexFlatL2
-
 from openfaceid.vector_stores.faiss import FAISS
+
 from tests import helpers
 
 pytestmark = pytest.mark.filterwarnings(
