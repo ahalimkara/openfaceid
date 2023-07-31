@@ -46,29 +46,3 @@ jobs:
       - name: Run tests
         run: |
           poetry run pytest --vcr-record=none
-
-  version:
-    name: Bump version
-    runs-on: ubuntu-latest
-    needs: [build]
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-
-      - name: Install poetry
-        run: |
-          pipx install poetry
-
-      - name: Bump version and tag version
-        run: |
-          poetry version patch
-
-          git config user.name "Abdulhalim Kara"
-          git config user.email "ahalimkara@gmail.com"
-          git add .
-          git commit --no-verify --message "[skip ci] Bump version to $(poetry version -s)"
-          git tag -a "v$(poetry version -s)" -m "Version $(poetry version -s)"
-          git push "https://${{ secrets.GH_USERNAME }}:${{ secrets.GH_PAT }}@github.com/${{ github.repository }}.git" --follow-tags
