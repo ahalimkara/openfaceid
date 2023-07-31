@@ -63,7 +63,7 @@ jobs:
         run: |
           pipx install poetry
 
-      - name: Bump version and tag it
+      - name: Bump version and tag version
         run: |
           poetry version patch
 
