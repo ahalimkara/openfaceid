@@ -7,10 +7,6 @@ from openfaceid.vector_stores.faiss import FAISS
 
 from tests import helpers
 
-pytestmark = pytest.mark.filterwarnings(
-    "ignore:distutils Version classes are deprecated."
-)
-
 
 @pytest.fixture
 def faiss_index() -> IndexFlatL2:

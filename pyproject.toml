@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "openfaceid"
-version = "0.1.0"
+version = "0.1.1"
 description = "Identity Verification with Facial Recognition"
 authors = ["Abdulhalim Kara <ahalimkara@gmail.com>"]
 license = "Apache License 2.0"
@@ -73,3 +73,14 @@ disallow_untyped_defs = true
 [[tool.mypy.overrides]]
 module = ["dlib.*", "_dlib_pybind11.*", "faiss.*", "pinecone.*"]
 ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+addopts = [
+    "--strict-config",
+    "--strict-markers",
+]
+filterwarnings = [
+    "error",
+    "ignore:distutils Version classes are deprecated:DeprecationWarning",
+    "ignore:HTTPResponse\\.getheader\\(\\) is deprecated and will be removed in urllib3:DeprecationWarning",
+]
