@@ -45,3 +45,13 @@ jobs:
       - name: Run tests
         run: |
           poetry run pytest --vcr-record=none
+
+      - name: Build
+        run: |
+          poetry build
+
+      - name: Release
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master' && startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v1
+        with:
+          files: dist/*
